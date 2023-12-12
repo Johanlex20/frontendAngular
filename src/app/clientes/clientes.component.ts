@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-clientes',
@@ -14,7 +15,9 @@ export class ClientesComponent implements OnInit{
 constructor(private clienteService:ClienteService){}
 
 ngOnInit(){
-  this.clientes = this.clienteService.getAll()
+  this.clienteService.getAll().subscribe(
+    clientes=> this.clientes = clientes
+  )
 }
 
 
