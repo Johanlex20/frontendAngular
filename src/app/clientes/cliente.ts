@@ -4,4 +4,5 @@ export class Cliente {
     apellido:string
     telefono:string
     email:string
+    fecha:string
 }
