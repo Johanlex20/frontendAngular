@@ -17,6 +17,7 @@
                     <th>Telefono</th>
                     <th>Fecha</th>
                     <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,9 @@
                     <td>{{ cliente.fecha }}</td>
                     <td>
                         <button type="button" name="button" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary">EDITAR</button>
+                    </td>n
+                    <td>
+                        <button type="button" name="button" (click)="delete(cliente)" class="btn btn-danger">ELIMINAR</button>
                     </td>
                 </tr>
             </tbody>
