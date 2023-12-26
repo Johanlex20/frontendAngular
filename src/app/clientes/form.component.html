@@ -3,43 +3,43 @@
     <div class="card-body">
 
         <form>
-            <div class="form-group row">
+            <div class="form-group row py-2">
                 <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <input type="text" class="form-control" [(ngModel)]="cliente.nombre" name="nombre">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row py-2">
                 <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row py-2">
                 <label for="telefono" class="col-form-label col-sm-2">telefono</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <input type="text" class="form-control" [(ngModel)]="cliente.telefono" name="telefono">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row py-2">
                 <label for="email" class="col-form-label col-sm-2">Email</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <input type="text" class="form-control" [(ngModel)]="cliente.email" name="email">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row py-2">
                 <label for="fecha" class="col-form-label col-sm-2">Fecha</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                     <input type="text" class="form-control" [(ngModel)]="cliente.fecha" name="fecha">
                 </div>
             </div>
 
-            <div class="form-group row">
-                <div class="col-sm-6">
-                    <button class="btn btn-primary" role="button"  ((click))='create()' *ngIf="!cliente.id else elseBlock">CREAR</button>
+            <div class="form-group row py-3">
+                <div class="col-sm-9">
+                    <button class="btn btn-primary" role="button"  (click)='create()' *ngIf="!cliente.id else elseBlock">CREAR</button>
 
                     <ng-template #elseBlock>
-                        <button class="btn btn-primary" role="button"  ((click))='update()'>EDITAR</button>
+                        <button class="btn btn-primary" role="button"  (click)='update()'>EDITAR</button>
                     </ng-template>
                     
                 </div>

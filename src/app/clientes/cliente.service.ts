@@ -9,9 +9,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ClienteService implements OnInit{
 
-  private urlEndPoint: string = 'http://localhost:8080/api/clientes';
+  private urlEndPoint: string = "http://localhost:8080/api/clientes";
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
 
