@@ -1,7 +1,7 @@
 import { Injectable, OnInit} from '@angular/core';
 import { CLIENTES } from './cliente.json';
 import { Cliente } from './cliente';
-import { Observable,map,of,catchError,throwError } from 'rxjs';
+import { Observable,map,of,catchError,throwError,tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -24,16 +24,35 @@ export class ClienteService implements OnInit{
   getAll(): Observable<Cliente[]> {
     //return of(CLIENTES);
     return this.http.get(this.urlEndPoint).pipe(
+      
+      tap(response => {
+        console.log('ClienteService: tap 1:')
+        let clientes = response as Cliente[];
+        clientes.forEach( cliente => {
+          console.log(cliente.nombre);
+        })
+      }),
+
+
       map(response => {
         let clientes = response as Cliente[];
         return clientes.map(cliente => {
           cliente.nombre = cliente.nombre.toUpperCase();
-          let datePipe = new DatePipe('en-US');
-          cliente.fecha =  datePipe.transform(cliente.fecha, 'dd-MM-yyyy');//FullDay //formatDate(cliente.fecha, 'dd-MM-yyyy','en-US');
+          //let datePipe = new DatePipe('en-US');
+          //cliente.fecha =  datePipe.transform(cliente.fecha, 'dd-MM-yyyy');//FullDay //formatDate(cliente.fecha, 'dd-MM-yyyy','en-US');
           return cliente;
         })
+      }),
+
       
-      })
+      tap(response => {
+        console.log('ClienteService: tap 2:')
+        response.forEach( cliente => {
+          console.log(cliente.nombre);
+        })
+      }),
+
+
     );
   }
 
