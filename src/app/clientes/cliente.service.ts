@@ -21,33 +21,32 @@ export class ClienteService implements OnInit{
   ngOnInit(): void {
   }
 
-  getAll(): Observable<Cliente[]> {
+  getAll(page:number): Observable<any[]> {
     //return of(CLIENTES);
-    return this.http.get(this.urlEndPoint).pipe(
+    return this.http.get(this.urlEndPoint+'/page/' +page).pipe(
       
-      tap(response => {
-        console.log('ClienteService: tap 1:')
-        let clientes = response as Cliente[];
-        clientes.forEach( cliente => {
+      tap((response:any) => {
+        console.log('ClienteService: tap 1:');
+        (response.content as Cliente[]).forEach( cliente => {
           console.log(cliente.nombre);
-        })
+        });
       }),
 
 
-      map(response => {
-        let clientes = response as Cliente[];
-        return clientes.map(cliente => {
+      map((response:any) => {
+        (response.content as Cliente[]).map(cliente => {
           cliente.nombre = cliente.nombre.toUpperCase();
           //let datePipe = new DatePipe('en-US');
           //cliente.fecha =  datePipe.transform(cliente.fecha, 'dd-MM-yyyy');//FullDay //formatDate(cliente.fecha, 'dd-MM-yyyy','en-US');
           return cliente;
-        })
+        });
+        return response;
       }),
 
       
       tap(response => {
-        console.log('ClienteService: tap 2:')
-        response.forEach( cliente => {
+        console.log('ClienteService: tap 2:');
+        (response.content as Cliente[]).forEach( cliente => {
           console.log(cliente.nombre);
         })
       }),
