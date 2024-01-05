@@ -10,38 +10,38 @@
       <div *ngIf="clientes?.length==0" class="alert alert-infa-flip-horizontal">
         No hay registros en la base de datos.
       </div>
-
-        <table class="table table-bordered table-striped" *ngIf="clientes?.length>0">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                    <th>Fecha</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let cliente of clientes">
-                    <td>{{ cliente.id }}</td>
-                    <td>{{ cliente.nombre }}</td>
-                    <td>{{ cliente.apellido }}</td>
-                    <td>{{ cliente.email }}</td>
-                    <td>{{ cliente.telefono }}</td>
-                    <td>{{ cliente.fecha }}</td>
-                    <td>
-                        <button type="button" name="button" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary">EDITAR</button>
-                    </td>
-                    <td>
-                        <button type="button" name="button" (click)="delete(cliente)" class="btn btn-danger">ELIMINAR</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <paginator-nav></paginator-nav>
+        <div class="table-responsive-xl">
+            <table class="table table-bordered table-striped" *ngIf="clientes?.length>0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Telefono</th>
+                        <th>Fecha</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of clientes">
+                        <td>{{ cliente.id }}</td>
+                        <td>{{ cliente.nombre }}</td>
+                        <td>{{ cliente.apellido }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td>{{ cliente.telefono }}</td>
+                        <td>{{ cliente.fecha }}</td>
+                        <td>
+                            <button type="button" name="button" [routerLink]="['/clientes/form', cliente.id]" class="btn btn-primary">EDITAR</button>
+                        </td>
+                        <td>
+                            <button type="button" name="button" (click)="delete(cliente)" class="btn btn-danger">ELIMINAR</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <paginator-nav  *ngIf="paginador" [paginador] = "paginador"></paginator-nav>
     </div>
   </div>
