@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 
 const routes:Routes = [
@@ -32,7 +33,8 @@ const routes:Routes = [
     HeaderComponent,
     ClientesComponent,
     InicioComponent,
-    FormComponent
+    FormComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
