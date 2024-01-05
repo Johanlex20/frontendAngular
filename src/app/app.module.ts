@@ -14,8 +14,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
-import { registerLocaleData } from '@angular/common';
-
 
 
 const routes:Routes = [
@@ -43,7 +41,7 @@ const routes:Routes = [
     
   ],
   providers: [
-    ClienteService
+    ClienteService,
   ],
   bootstrap: [AppComponent]
 })
