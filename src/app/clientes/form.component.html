@@ -69,12 +69,7 @@
             <div class="form-group row py-2">
                 <label for="fecha" class="col-form-label col-sm-2">Fecha</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" [(ngModel)]="cliente.fecha" name="fecha" #fecha="ngModel"><!-- required -->
-                    <div class="alert alert-danger" *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)">
-                        <div *ngIf="fecha.errors.required">
-                            Fecha es requerida
-                        </div>
-                    </div>
+                    <input type="date" class="form-control" [(ngModel)]="cliente.fecha" name="fecha" ><!-- required -->
                 </div>
             </div>
 
