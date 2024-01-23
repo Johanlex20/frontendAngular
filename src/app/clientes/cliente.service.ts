@@ -2,7 +2,7 @@ import { Injectable, OnInit} from '@angular/core';
 import { CLIENTES } from './cliente.json';
 import { Cliente } from './cliente';
 import { Observable,map,of,catchError,throwError,tap } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { formatDate, DatePipe } from '@angular/common';
@@ -107,18 +107,17 @@ export class ClienteService implements OnInit{
     )
   }
 
-  subirFoto(archivo: File, id):Observable<Cliente> {
+  subirFoto(archivo: File, id):Observable<HttpEvent<{}>> {
     let formData = new FormData();
     formData.append("archivo", archivo);//mismo nombre que le pusimos en el backend
     formData.append("id",id);
-    return this.http.post(`${this.urlEndPoint}/upload`, formData).pipe(
-      map( (response:any) => response.cliente as Cliente),
-      catchError(e=>{
-        console.error(e.error.mensaje);
-        Swal.fire(e.error.mensaje, e.error.error, 'error');
-        return throwError(e);
-      })
-    );
+
+
+    const req = new HttpRequest('POST',`${this.urlEndPoint}/upload`, formData,{
+      reportProgress:true
+    });
+
+    return this.http.request(req);
   }
 
 }
