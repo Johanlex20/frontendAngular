@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { DetalleComponent } from './clientes/detalle/detalle.component';
 
 
 const routes:Routes = [
@@ -24,6 +25,7 @@ const routes:Routes = [
   {path:'clientes/form', component: FormComponent},
   {path:'clientes/form/:id', component: FormComponent},
   {path:'clientes/page/:page', component: ClientesComponent},
+  {path:'clientes/ver/:id', component: DetalleComponent},
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const routes:Routes = [
     ClientesComponent,
     InicioComponent,
     FormComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,
