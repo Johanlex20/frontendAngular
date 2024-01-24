@@ -42,7 +42,16 @@ constructor(private clienteService:ClienteService, private activatedRouter:Activ
           this.paginador = response;
         })
         );
-    })  
+    });
+    
+    this.modalService.notificarUpload.subscribe( cliente=>{
+        this.clientes = this.clientes.map(clienteOriginal =>{
+            if(cliente.id == clienteOriginal.id){
+              clienteOriginal.foto = cliente.foto
+            }
+            return clienteOriginal; 
+      })
+    })
   }
 
   delete(cliente: Cliente) :void {
