@@ -5,11 +5,11 @@ import { map } from 'rxjs';
 import Swal from 'sweetalert2';
 import { tap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ModalService } from './detalle/modal.service';
 
 @Component({
   selector: 'app-clientes',
-  templateUrl: './clientes.component.html',
-  styleUrls: ['./clientes.component.css']
+  templateUrl: './clientes.component.html'
 })
 export class ClientesComponent implements OnInit{
 
@@ -17,7 +17,7 @@ export class ClientesComponent implements OnInit{
  public paginador: any;
  public clienteSeleccionado:Cliente;
 
-constructor(private clienteService:ClienteService, private activatedRouter:ActivatedRoute){}
+constructor(private clienteService:ClienteService, private activatedRouter:ActivatedRoute, private modalService:ModalService){}
 
   ngOnInit(){
     this.activatedRouter.paramMap.subscribe(params =>{
@@ -81,6 +81,7 @@ constructor(private clienteService:ClienteService, private activatedRouter:Activ
 
   abrirModal(cliente:Cliente){
     this.clienteSeleccionado = cliente;
+    this.modalService.abrirModal();
   }
 
 }
